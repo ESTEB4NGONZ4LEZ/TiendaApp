@@ -7,7 +7,7 @@ public class Venta
 {
     // * Atributos de la Clase
     [Key]
-    public int Id_vente { get; set; }
+    public int Id_venta { get; set; }
     public int Id_factura { get; set; }
     public int Id_producto { get; set; }
     public int Cantidad { get; set; }
