@@ -3,11 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities;
 
-public class Factura
+public class Factura : BaseEntity
 {
     // * Atributos de la Clase
-    [Key]
-    public int Id_factura { get; set; }
     public DateTime Fecha { get; set; }
     public int Id_cliente { get; set; }
     // * ICollection

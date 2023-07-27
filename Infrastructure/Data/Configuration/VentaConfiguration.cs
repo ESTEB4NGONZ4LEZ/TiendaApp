@@ -11,7 +11,7 @@ public class VentaConfiguration : IEntityTypeConfiguration<Venta>
     {
         builder.ToTable("venta");
 
-        builder.Property(a => a.Id_venta)
+        builder.Property(a => a.Id)
         .IsRequired();
 
         builder.HasOne(a => a.Factura)

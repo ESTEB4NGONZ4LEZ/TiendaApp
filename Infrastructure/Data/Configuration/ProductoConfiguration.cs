@@ -11,7 +11,7 @@ public class ProductoConfiguration : IEntityTypeConfiguration<Producto>
     {
         builder.ToTable("producto");
 
-        builder.Property(a => a.Id_producto)
+        builder.Property(a => a.Id)
         .IsRequired();
 
         builder.Property(a => a.Descripcion)

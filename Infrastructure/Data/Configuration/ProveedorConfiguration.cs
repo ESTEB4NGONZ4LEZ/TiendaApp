@@ -11,16 +11,19 @@ public class ProveedorConfiguration : IEntityTypeConfiguration<Proveedor>
     {
         builder.ToTable("proveedor");
 
-        builder.Property(a => a.Id_proveedor)
+        builder.Property(a => a.Id)
         .IsRequired();
         
         builder.Property(a => a.Nombre)
+        .HasMaxLength(30)
         .IsRequired();
 
         builder.Property(a => a.Direccion)
+        .HasMaxLength(50)
         .IsRequired();
 
         builder.Property(a => a.Telefono)
+        .HasMaxLength(20)
         .IsRequired();
     }
 }

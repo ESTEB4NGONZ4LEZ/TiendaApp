@@ -11,7 +11,7 @@ public class FacturaConfiguration : IEntityTypeConfiguration<Factura>
     {
         builder.ToTable("factura");
 
-        builder.Property(a => a.Id_factura)
+        builder.Property(a => a.Id)
         .IsRequired();
 
         builder.Property(a => a.Fecha)

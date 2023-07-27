@@ -3,11 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities;
 
-public class Producto
+public class Producto : BaseEntity
 {
     // * Atributos de la Clase
-    [Key]
-    public int Id_producto { get; set; }
     public string Descripcion { get; set; } = null!;
     public double Precio { get; set; }
     public int Id_categoria { get; set; }

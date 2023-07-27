@@ -11,7 +11,7 @@ public class CategoriaConfiguration : IEntityTypeConfiguration<Categoria>
     {
         builder.ToTable("categoria");
 
-        builder.Property(a => a.Id_categoria)
+        builder.Property(a => a.Id)
         .IsRequired();
 
         builder.Property(a => a.Descripcion)
