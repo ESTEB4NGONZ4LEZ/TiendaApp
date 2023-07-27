@@ -1,1 +1,19 @@
 
+using System.Linq.Expressions;
+using Core.Entities;
+
+namespace Core.Interface;
+// * ----- Interfaz Generica -----
+// Esta interfaz se crea con el objetivo de heredar todos nuestros metodos a el resto de Interfaces y de esta forma evitar escribir el mismo codigo
+public interface IGeneric<T> where T : BaseEntity
+{
+    Task<T> GetByIdAsync(int id);
+    Task<IEnumerable<T>> GetAllAsync();
+    IEnumerable<T> Find(Expression<Func<T, bool>> expression);
+    Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync(int pageIndex, int pageSize, string search);
+    void Add(T entity);
+    void AddRange(IEnumerable<T> entities);
+    void Remove(T entity);
+    void RemoveRange(IEnumerable<T> entities);
+    void Update(T entity);
+}
