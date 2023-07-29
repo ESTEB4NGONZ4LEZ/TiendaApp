@@ -1,37 +1,26 @@
 
 using Core.Interface;
-using Infrastructure.Datal;
+using Infrastructure.Data;
+using Infrastructure.Repository;
 
 namespace Infrastructure.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork, IDisposable
 {
     private readonly TiendaAppContext _context;
+    private CategoriaRepository _categorias;
+    private ClienteRepository _clientes;
+    private FacturaRepository _facturas;
+    private ProductoRepository _productos;
+    private ProveedorRepository _proveedores;
+    private VentaRepository _ventas;
 
     public UnitOfWork(TiendaAppContext context)
     {
         _context = context;
     }
 
-    public ICategoria Categorias { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public ICliente Clientes { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public IFactura Facturas { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public IProducto Productos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public IProveedor Proveedores { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public IVenta Ventas { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-    public void Dispose()
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<int> SaveAsync()
-    {
-        throw new NotImplementedException();
-    }
-}
-
-    /* public ICategoria Categoria
+    public ICategoria Categorias
     { 
         get 
         {
@@ -48,7 +37,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             }
         } 
     }
-    public ICliente Cliente
+    public ICliente Clientes
     { 
         get 
         {
@@ -65,7 +54,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             }
         } 
     }
-    public IFactura Factura
+    public IFactura Facturas
     { 
         get 
         {
@@ -82,7 +71,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             }
         } 
     }
-    public IProducto Producto
+    public IProducto Productos
     { 
         get 
         {
@@ -99,7 +88,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             }
         } 
     }
-    public IProveedor Proveedor
+    public IProveedor Proveedores
     { 
         get 
         {
@@ -116,7 +105,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             }
         } 
     }
-    public IVenta Venta
+    public IVenta Ventas
     { 
         get 
         {
@@ -141,4 +130,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     public Task<int> SaveAsync()
     {
         return _context.SaveChangesAsync();
-    } */
+    }
+}
+
+    /*  */

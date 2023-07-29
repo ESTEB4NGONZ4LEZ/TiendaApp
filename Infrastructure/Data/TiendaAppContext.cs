@@ -3,7 +3,7 @@ using System.Reflection;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Datal;
+namespace Infrastructure.Data;
 
 public class TiendaAppContext : DbContext
 {
