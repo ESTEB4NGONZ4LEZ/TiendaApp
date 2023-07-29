@@ -7,6 +7,5 @@ public class ProductoDto
     public double Precio { get; set; }
     public int Id_categoria { get; set; }
     public int Id_proveedor { get; set; }
-    // public List<VentaDto>? Ventas { get; set; }
-
+    public List<VentaDto>? Ventas { get; set; }
 }
