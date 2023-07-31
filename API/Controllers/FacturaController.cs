@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class CategoriaController : BaseApiController
+public class FacturaController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public CategoriaController(IUnitOfWork unitOfWork, IMapper mapper)
-    {
+    public FacturaController(IUnitOfWork unitOfWork, IMapper mapper){
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
@@ -21,52 +20,52 @@ public class CategoriaController : BaseApiController
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<List<CategoriasDto>> Get()
+    public async Task<List<FacturasDto>> Get()
     {
-        var categorias = await _unitOfWork.Categorias.GetAllAsync();
-        return _mapper.Map<List<CategoriasDto>>(categorias);
+        var facturas = await _unitOfWork.Facturas.GetAllAsync();
+        return _mapper.Map<List<FacturasDto>>(facturas);
     }
     // * ----- Metodo GET por ID -----
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriaDto>> Get(int id)
+    public async Task<ActionResult<FacturaDto>> Get(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var factura = await _unitOfWork.Facturas.GetByIdAsync(id);
+        if (factura == null) {
             return NotFound();
         }
-        return _mapper.Map<CategoriaDto>(categoria);
+        return _mapper.Map<FacturaDto>(factura);
     }
     // * ----- Metodo POST -----
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Post(CategoriasDto categorias)
+    public async Task<ActionResult<FacturasDto>> Post(FacturasDto facturas)
     {
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Add(categoria);
+        var factura = _mapper.Map<Factura>(facturas);
+        _unitOfWork.Facturas.Add(factura);
         await _unitOfWork.SaveAsync();
-        if (categoria == null) {
+        if (factura == null) {
             return BadRequest();
         }
-        categoria.Id = categoria.Id;
-        return CreatedAtAction(nameof(Post), new {id = categoria.Id}, categoria);
+        factura.Id = factura.Id;
+        return CreatedAtAction(nameof(Post), new {id = factura.Id}, factura);
     }
     // * ----- Metodo PUT -----
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Put(int id, [FromBody]CategoriasDto categorias)
+    public async Task<ActionResult<FacturasDto>> Put(int id, [FromBody]FacturasDto facturas)
     {
-        if (categorias == null) {
+        if (facturas == null) {
             return NotFound();
         }
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Update(categoria);
+        var factura = _mapper.Map<Factura>(facturas);
+        _unitOfWork.Facturas.Update(factura);
         await _unitOfWork.SaveAsync();
-        return categorias;
+        return facturas;
     }
     // * ----- Metodo DELETE -----
     [HttpDelete("{id}")]
@@ -74,12 +73,12 @@ public class CategoriaController : BaseApiController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var factura = await _unitOfWork.Facturas.GetByIdAsync(id);
+        if (factura == null) {
             return NotFound();
         }
-        _unitOfWork.Categorias.Remove(categoria);
+        _unitOfWork.Facturas.Remove(factura);
         await _unitOfWork.SaveAsync();
-        return NoContent();
+        return NoContent(); 
     }
 }

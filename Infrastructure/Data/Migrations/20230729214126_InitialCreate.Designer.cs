@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(TiendaAppContext))]
-    [Migration("20230726050502_InitialCreate")]
+    [Migration("20230729214126_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Categoria", b =>
                 {
-                    b.Property<int>("Id_categoria")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -32,14 +32,14 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id_categoria");
+                    b.HasKey("Id");
 
                     b.ToTable("categoria", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.Cliente", b =>
                 {
-                    b.Property<int>("Id_cliente")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -58,14 +58,14 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.HasKey("Id_cliente");
+                    b.HasKey("Id");
 
                     b.ToTable("cliente", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.Factura", b =>
                 {
-                    b.Property<int>("Id_factura")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -75,7 +75,7 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("Id_cliente")
                         .HasColumnType("int");
 
-                    b.HasKey("Id_factura");
+                    b.HasKey("Id");
 
                     b.HasIndex("Id_cliente");
 
@@ -84,7 +84,7 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Producto", b =>
                 {
-                    b.Property<int>("Id_producto")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -101,7 +101,7 @@ namespace Infrastructure.Data.Migrations
                     b.Property<double>("Precio")
                         .HasColumnType("double");
 
-                    b.HasKey("Id_producto");
+                    b.HasKey("Id");
 
                     b.HasIndex("Id_categoria");
 
@@ -112,7 +112,7 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Proveedor", b =>
                 {
-                    b.Property<int>("Id_proveedor")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -131,14 +131,14 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.HasKey("Id_proveedor");
+                    b.HasKey("Id");
 
                     b.ToTable("proveedor", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.Venta", b =>
                 {
-                    b.Property<int>("Id_venta")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -151,7 +151,7 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("Id_producto")
                         .HasColumnType("int");
 
-                    b.HasKey("Id_venta");
+                    b.HasKey("Id");
 
                     b.HasIndex("Id_factura");
 

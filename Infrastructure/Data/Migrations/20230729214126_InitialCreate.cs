@@ -19,14 +19,14 @@ namespace Infrastructure.Data.Migrations
                 name: "categoria",
                 columns: table => new
                 {
-                    Id_categoria = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Descripcion = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_categoria", x => x.Id_categoria);
+                    table.PrimaryKey("PK_categoria", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -34,7 +34,7 @@ namespace Infrastructure.Data.Migrations
                 name: "cliente",
                 columns: table => new
                 {
-                    Id_cliente = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -45,7 +45,7 @@ namespace Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_cliente", x => x.Id_cliente);
+                    table.PrimaryKey("PK_cliente", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -53,7 +53,7 @@ namespace Infrastructure.Data.Migrations
                 name: "proveedor",
                 columns: table => new
                 {
-                    Id_proveedor = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -64,7 +64,7 @@ namespace Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_proveedor", x => x.Id_proveedor);
+                    table.PrimaryKey("PK_proveedor", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -72,19 +72,19 @@ namespace Infrastructure.Data.Migrations
                 name: "factura",
                 columns: table => new
                 {
-                    Id_factura = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Fecha = table.Column<DateTime>(type: "date", nullable: false),
                     Id_cliente = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_factura", x => x.Id_factura);
+                    table.PrimaryKey("PK_factura", x => x.Id);
                     table.ForeignKey(
                         name: "FK_factura_cliente_Id_cliente",
                         column: x => x.Id_cliente,
                         principalTable: "cliente",
-                        principalColumn: "Id_cliente",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -93,7 +93,7 @@ namespace Infrastructure.Data.Migrations
                 name: "producto",
                 columns: table => new
                 {
-                    Id_producto = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Descripcion = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -103,18 +103,18 @@ namespace Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_producto", x => x.Id_producto);
+                    table.PrimaryKey("PK_producto", x => x.Id);
                     table.ForeignKey(
                         name: "FK_producto_categoria_Id_categoria",
                         column: x => x.Id_categoria,
                         principalTable: "categoria",
-                        principalColumn: "Id_categoria",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_producto_proveedor_Id_proveedor",
                         column: x => x.Id_proveedor,
                         principalTable: "proveedor",
-                        principalColumn: "Id_proveedor",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -123,7 +123,7 @@ namespace Infrastructure.Data.Migrations
                 name: "venta",
                 columns: table => new
                 {
-                    Id_venta = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Id_factura = table.Column<int>(type: "int", nullable: false),
                     Id_producto = table.Column<int>(type: "int", nullable: false),
@@ -131,18 +131,18 @@ namespace Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_venta", x => x.Id_venta);
+                    table.PrimaryKey("PK_venta", x => x.Id);
                     table.ForeignKey(
                         name: "FK_venta_factura_Id_factura",
                         column: x => x.Id_factura,
                         principalTable: "factura",
-                        principalColumn: "Id_factura",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_venta_producto_Id_producto",
                         column: x => x.Id_producto,
                         principalTable: "producto",
-                        principalColumn: "Id_producto",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");

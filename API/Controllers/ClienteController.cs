@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class CategoriaController : BaseApiController
+public class ClienteController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public CategoriaController(IUnitOfWork unitOfWork, IMapper mapper)
-    {
+    public ClienteController(IUnitOfWork unitOfWork, IMapper mapper){
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
@@ -21,52 +20,52 @@ public class CategoriaController : BaseApiController
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<List<CategoriasDto>> Get()
+    public async Task<List<ClientesDto>> Get()
     {
-        var categorias = await _unitOfWork.Categorias.GetAllAsync();
-        return _mapper.Map<List<CategoriasDto>>(categorias);
+        var clientes = await _unitOfWork.Clientes.GetAllAsync();
+        return _mapper.Map<List<ClientesDto>>(clientes);
     }
     // * ----- Metodo GET por ID -----
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriaDto>> Get(int id)
+    public async Task<ActionResult<ClienteDto>> Get(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var cliente = await _unitOfWork.Clientes.GetByIdAsync(id);
+        if (cliente == null) {
             return NotFound();
         }
-        return _mapper.Map<CategoriaDto>(categoria);
+        return _mapper.Map<ClienteDto>(cliente);
     }
     // * ----- Metodo POST -----
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Post(CategoriasDto categorias)
+    public async Task<ActionResult<ClientesDto>> Post(ClientesDto clientes)
     {
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Add(categoria);
+        var cliente = _mapper.Map<Cliente>(clientes);
+        _unitOfWork.Clientes.Add(cliente);
         await _unitOfWork.SaveAsync();
-        if (categoria == null) {
+        if (cliente == null) {
             return BadRequest();
         }
-        categoria.Id = categoria.Id;
-        return CreatedAtAction(nameof(Post), new {id = categoria.Id}, categoria);
+        cliente.Id = cliente.Id;
+        return CreatedAtAction(nameof(Post), new {id = cliente.Id}, cliente);
     }
     // * ----- Metodo PUT -----
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Put(int id, [FromBody]CategoriasDto categorias)
+    public async Task<ActionResult<ClientesDto>> Put(int id, [FromBody]ClientesDto clientes)
     {
-        if (categorias == null) {
+        if (clientes == null) {
             return NotFound();
         }
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Update(categoria);
+        var cliente = _mapper.Map<Cliente>(clientes);
+        _unitOfWork.Clientes.Update(cliente);
         await _unitOfWork.SaveAsync();
-        return categorias;
+        return clientes;
     }
     // * ----- Metodo DELETE -----
     [HttpDelete("{id}")]
@@ -74,12 +73,12 @@ public class CategoriaController : BaseApiController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var cliente = await _unitOfWork.Clientes.GetByIdAsync(id);
+        if (cliente == null) {
             return NotFound();
         }
-        _unitOfWork.Categorias.Remove(categoria);
+        _unitOfWork.Clientes.Remove(cliente);
         await _unitOfWork.SaveAsync();
-        return NoContent();
+        return NoContent(); 
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CIfBtvtlRmKNhhcSgJl3WyRhsJkFduQ4mEJ+wpAbqaKh9N71h8t5ojW+/r++Pm2TQjBm+GgIRcSHWpA4qLnJng==",
+  "dgSpecHash": "/7WW7pMsq4OyB0WyI2KJfVX2meTUv/9SMp1F02gMov1hB2j63Z1mqsUxVzBZ3fsyEedO8xZp+EG1oSu3vUMiEA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Esteban\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Esteban\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

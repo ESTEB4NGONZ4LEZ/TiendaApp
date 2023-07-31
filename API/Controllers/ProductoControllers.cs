@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class CategoriaController : BaseApiController
+public class ProductoController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public CategoriaController(IUnitOfWork unitOfWork, IMapper mapper)
-    {
+    public ProductoController(IUnitOfWork unitOfWork, IMapper mapper){
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
@@ -21,52 +20,52 @@ public class CategoriaController : BaseApiController
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<List<CategoriasDto>> Get()
+    public async Task<List<ProductosDto>> Get()
     {
-        var categorias = await _unitOfWork.Categorias.GetAllAsync();
-        return _mapper.Map<List<CategoriasDto>>(categorias);
+        var productos = await _unitOfWork.Productos.GetAllAsync();
+        return _mapper.Map<List<ProductosDto>>(productos);
     }
     // * ----- Metodo GET por ID -----
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriaDto>> Get(int id)
+    public async Task<ActionResult<ProductoDto>> Get(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var producto = await _unitOfWork.Productos.GetByIdAsync(id);
+        if (producto == null) {
             return NotFound();
         }
-        return _mapper.Map<CategoriaDto>(categoria);
+        return _mapper.Map<ProductoDto>(producto);
     }
     // * ----- Metodo POST -----
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Post(CategoriasDto categorias)
+    public async Task<ActionResult<ProductosDto>> Post(ProductosDto productos)
     {
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Add(categoria);
+        var producto = _mapper.Map<Producto>(productos);
+        _unitOfWork.Productos.Add(producto);
         await _unitOfWork.SaveAsync();
-        if (categoria == null) {
+        if (producto == null) {
             return BadRequest();
         }
-        categoria.Id = categoria.Id;
-        return CreatedAtAction(nameof(Post), new {id = categoria.Id}, categoria);
+        producto.Id = producto.Id;
+        return CreatedAtAction(nameof(Post), new {id = producto.Id}, producto);
     }
     // * ----- Metodo PUT -----
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Put(int id, [FromBody]CategoriasDto categorias)
+    public async Task<ActionResult<ProductosDto>> Put(int id, [FromBody]ProductosDto productos)
     {
-        if (categorias == null) {
+        if (productos == null) {
             return NotFound();
         }
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Update(categoria);
+        var producto = _mapper.Map<Producto>(productos);
+        _unitOfWork.Productos.Update(producto);
         await _unitOfWork.SaveAsync();
-        return categorias;
+        return productos;
     }
     // * ----- Metodo DELETE -----
     [HttpDelete("{id}")]
@@ -74,12 +73,12 @@ public class CategoriaController : BaseApiController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var producto = await _unitOfWork.Productos.GetByIdAsync(id);
+        if (producto == null) {
             return NotFound();
         }
-        _unitOfWork.Categorias.Remove(categoria);
+        _unitOfWork.Productos.Remove(producto);
         await _unitOfWork.SaveAsync();
-        return NoContent();
+        return NoContent(); 
     }
 }

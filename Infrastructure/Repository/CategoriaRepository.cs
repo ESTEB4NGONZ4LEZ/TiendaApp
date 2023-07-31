@@ -23,6 +23,7 @@ public class CategoriaRepository : GenericRepository<Categoria>, ICategoria
     public override async Task<Categoria> GetByIdAsync(int id)
     {
         return await _context.Categorias
+        .Include(a => a.Productos)
         .FirstOrDefaultAsync(a => a.Id == id);
     }
 }

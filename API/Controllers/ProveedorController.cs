@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class CategoriaController : BaseApiController
+public class ProveedorController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public CategoriaController(IUnitOfWork unitOfWork, IMapper mapper)
-    {
+    public ProveedorController(IUnitOfWork unitOfWork, IMapper mapper){
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
@@ -21,52 +20,52 @@ public class CategoriaController : BaseApiController
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<List<CategoriasDto>> Get()
+    public async Task<List<ProveedoresDto>> Get()
     {
-        var categorias = await _unitOfWork.Categorias.GetAllAsync();
-        return _mapper.Map<List<CategoriasDto>>(categorias);
+        var proveedores = await _unitOfWork.Proveedores.GetAllAsync();
+        return _mapper.Map<List<ProveedoresDto>>(proveedores);
     }
     // * ----- Metodo GET por ID -----
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriaDto>> Get(int id)
+    public async Task<ActionResult<ProveedorDto>> Get(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var proveedor = await _unitOfWork.Proveedores.GetByIdAsync(id);
+        if (proveedor == null) {
             return NotFound();
         }
-        return _mapper.Map<CategoriaDto>(categoria);
+        return _mapper.Map<ProveedorDto>(proveedor);
     }
     // * ----- Metodo POST -----
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Post(CategoriasDto categorias)
+    public async Task<ActionResult<ProveedoresDto>> Post(ProveedoresDto proveedores)
     {
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Add(categoria);
+        var proveedor = _mapper.Map<Proveedor>(proveedores);
+        _unitOfWork.Proveedores.Add(proveedor);
         await _unitOfWork.SaveAsync();
-        if (categoria == null) {
+        if (proveedor == null) {
             return BadRequest();
         }
-        categoria.Id = categoria.Id;
-        return CreatedAtAction(nameof(Post), new {id = categoria.Id}, categoria);
+        proveedor.Id = proveedor.Id;
+        return CreatedAtAction(nameof(Post), new {id = proveedor.Id}, proveedor);
     }
     // * ----- Metodo PUT -----
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Put(int id, [FromBody]CategoriasDto categorias)
+    public async Task<ActionResult<ProveedoresDto>> Put(int id, [FromBody]ProveedoresDto proveedores)
     {
-        if (categorias == null) {
+        if (proveedores == null) {
             return NotFound();
         }
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Update(categoria);
+        var proveedor = _mapper.Map<Proveedor>(proveedores);
+        _unitOfWork.Proveedores.Update(proveedor);
         await _unitOfWork.SaveAsync();
-        return categorias;
+        return proveedores;
     }
     // * ----- Metodo DELETE -----
     [HttpDelete("{id}")]
@@ -74,12 +73,12 @@ public class CategoriaController : BaseApiController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var proveedor = await _unitOfWork.Proveedores.GetByIdAsync(id);
+        if (proveedor == null) {
             return NotFound();
         }
-        _unitOfWork.Categorias.Remove(categoria);
+        _unitOfWork.Proveedores.Remove(proveedor);
         await _unitOfWork.SaveAsync();
-        return NoContent();
+        return NoContent(); 
     }
 }

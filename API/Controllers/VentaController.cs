@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class CategoriaController : BaseApiController
+public class VentaController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public CategoriaController(IUnitOfWork unitOfWork, IMapper mapper)
-    {
+    public VentaController(IUnitOfWork unitOfWork, IMapper mapper){
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
@@ -21,52 +20,52 @@ public class CategoriaController : BaseApiController
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<List<CategoriasDto>> Get()
+    public async Task<List<VentaDto>> Get()
     {
-        var categorias = await _unitOfWork.Categorias.GetAllAsync();
-        return _mapper.Map<List<CategoriasDto>>(categorias);
+        var ventas = await _unitOfWork.Ventas.GetAllAsync();
+        return _mapper.Map<List<VentaDto>>(ventas);
     }
     // * ----- Metodo GET por ID -----
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriaDto>> Get(int id)
+    public async Task<ActionResult<VentaDto>> Get(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var venta = await _unitOfWork.Ventas.GetByIdAsync(id);
+        if (venta == null) {
             return NotFound();
         }
-        return _mapper.Map<CategoriaDto>(categoria);
+        return _mapper.Map<VentaDto>(venta);
     }
     // * ----- Metodo POST -----
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Post(CategoriasDto categorias)
+    public async Task<ActionResult<VentaDto>> Post(VentaDto ventas)
     {
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Add(categoria);
+        var venta = _mapper.Map<Venta>(ventas);
+        _unitOfWork.Ventas.Add(venta);
         await _unitOfWork.SaveAsync();
-        if (categoria == null) {
+        if (venta == null) {
             return BadRequest();
         }
-        categoria.Id = categoria.Id;
-        return CreatedAtAction(nameof(Post), new {id = categoria.Id}, categoria);
+        venta.Id = venta.Id;
+        return CreatedAtAction(nameof(Post), new {id = venta.Id}, venta);
     }
     // * ----- Metodo PUT -----
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CategoriasDto>> Put(int id, [FromBody]CategoriasDto categorias)
+    public async Task<ActionResult<VentaDto>> Put(int id, [FromBody]VentaDto ventas)
     {
-        if (categorias == null) {
+        if (ventas == null) {
             return NotFound();
         }
-        var categoria = _mapper.Map<Categoria>(categorias);
-        _unitOfWork.Categorias.Update(categoria);
+        var venta = _mapper.Map<Venta>(ventas);
+        _unitOfWork.Ventas.Update(venta);
         await _unitOfWork.SaveAsync();
-        return categorias;
+        return ventas;
     }
     // * ----- Metodo DELETE -----
     [HttpDelete("{id}")]
@@ -74,12 +73,12 @@ public class CategoriaController : BaseApiController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        var categoria = await _unitOfWork.Categorias.GetByIdAsync(id);
-        if (categoria == null) {
+        var venta = await _unitOfWork.Ventas.GetByIdAsync(id);
+        if (venta == null) {
             return NotFound();
         }
-        _unitOfWork.Categorias.Remove(categoria);
+        _unitOfWork.Ventas.Remove(venta);
         await _unitOfWork.SaveAsync();
-        return NoContent();
+        return NoContent(); 
     }
 }

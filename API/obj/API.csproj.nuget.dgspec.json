@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj": {}
+    "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj": {
+    "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Esteban\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Esteban\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -20,14 +20,15 @@
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -88,14 +89,14 @@
         }
       }
     },
-    "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj": {
+    "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\Esteban\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\obj\\",
+        "outputPath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Esteban\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -141,14 +142,14 @@
         }
       }
     },
-    "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Esteban\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Esteban\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -163,8 +164,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj": {
-                "projectPath": "c:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj"
+              "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Esteban\\Documents\\NetCore\\TiendaApp\\Core\\Core.csproj"
               }
             }
           }
